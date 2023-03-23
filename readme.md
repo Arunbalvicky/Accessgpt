@@ -2,7 +2,7 @@
 
 Contributors: @arunbal on WordPress.org
 
-Donate link: https://example.com/
+Donate link: none
 
 Tags: gpt,chatGPT,integration,AI,random content,content generation,automate,news and update
 
