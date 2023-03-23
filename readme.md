@@ -3,7 +3,9 @@
 Contributors: @arunbal on WordPress.org
 
 Donate link: none
-
+instagram: https://www.instagram.com/arunbalvicky/
+LinkedIn: https://www.linkedin.com/in/arunbal-p-366990181
+Email: arunbalvicky@gmail.com
 Tags: gpt,chatGPT,integration,AI,random content,content generation,automate,news and update
 
 Requires at least: 4.7
