@@ -14,7 +14,7 @@
 function connect_chatgpt($atts) {
   // Extract the shortcode attributes
   $atts = shortcode_atts( array(
-  'api' => '',
+  'api' => esc_attr(get_option('accessgpt_setting')),
   'prompt' => ''
   ), $atts );
 
@@ -39,7 +39,7 @@ function connect_chatgpt($atts) {
   $data = [
   'prompt' => $prompt,
   'model' => 'text-davinci-002',
-  'temperature' => 0.5,
+  'temperature' => 0.95,
   'max_tokens' => 4000,
   ];
 
@@ -87,13 +87,20 @@ function add_custom_menu_item() {
 }
 add_action( 'admin_menu', 'add_custom_menu_item' );
 
-// Create the page for the custom menu item
+// Create gpt menu setting page
 function gpt_menu_setting_page() {
   ?>
   <div class="wrap">
   <h2>Chat GPT Setting</h2>
   <p>Shortcode [connect_chatgpt api="YOUR CHAT GPT API KEY" prompt="ENTER THE INFO YOU WANT"]</p>
   </div>
+  <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+  <?php wp_nonce_field('save_accessgpt_settings'); ?>
+  <input type="hidden" name="action" value="save_accessgpt_settings">
+  <label for="accessgpt_setting">CHAT GPT API<a href="https://platform.openai.com/account/api-keys" target="_blank" > Get API</a>:</label>
+  <input type="text" id="accessgpt_setting" name="accessgpt_setting" value="<?php echo esc_attr(get_option('accessgpt_setting')); ?>" placeholder="ENTER API KEY">
+  <?php submit_button(); ?>
+</form>
   <style>
   h2,p{
     font-size: 20px;
@@ -102,4 +109,27 @@ function gpt_menu_setting_page() {
   </style>
   <?php
 }
+
+add_action('admin_post_save_accessgpt_settings', 'save_accessgpt_settings');
+
+function save_accessgpt_settings() {
+  $accessgpt_setting = $_POST['accessgpt_setting'];
+  update_option('accessgpt_setting', $accessgpt_setting);
+  wp_redirect(admin_url('admin.php?page=gpt_menu_setting'));
+  exit;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
