@@ -10,7 +10,7 @@ Email: arunbalvicky@gmail.com
 
 Donate link: none
 
-Tags: gpt,chatGPT,integration,AI,random content,content generation,automate,news and update
+Tags: wordpress,plugin,gpt,chatGPT,integration,AI,random content,content generation,automate,news and update
 
 Requires at least: 4.7
 
